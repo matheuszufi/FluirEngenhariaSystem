@@ -19,12 +19,19 @@ export default function Register() {
   const [deleted, setDeleted] = useState(false)
 
   useEffect(() => {
+    const timeout = setTimeout(() => setChecking(false), 4000)
+
     getDoc(SETTINGS_DOC)
       .then((snap) => {
         if (snap.exists() && snap.data().enabled === false) setEnabled(false)
       })
       .catch(() => {})
-      .finally(() => setChecking(false))
+      .finally(() => {
+        clearTimeout(timeout)
+        setChecking(false)
+      })
+
+    return () => clearTimeout(timeout)
   }, [])
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
