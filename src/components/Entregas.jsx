@@ -1,13 +1,28 @@
-const images = [
-  { id: 1, label: 'Projeto Residencial Torre A', src: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80' },
-  { id: 2, label: 'BIM - Hidrossanitário', src: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80' },
-  { id: 3, label: 'Projeto Incêndio', src: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80' },
-  { id: 4, label: 'Planta Baixa BIM', src: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80' },
-  { id: 5, label: 'Modelagem 3D', src: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80' },
-  { id: 6, label: 'Empreendimento Residencial', src: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80' },
-]
+import { useState, useEffect } from 'react'
+import { ref, onValue } from 'firebase/database'
+import { rtdb } from '../firebase'
 
 export default function Entregas() {
+  const [images, setImages] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const unsub = onValue(ref(rtdb, 'entregas'), (snap) => {
+      if (snap.exists()) {
+        const items = Object.entries(snap.val())
+          .map(([id, v]) => ({ id, ...v }))
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+        setImages(items)
+      } else {
+        setImages([])
+      }
+      setLoading(false)
+    })
+    return () => unsub()
+  }, [])
+
+  if (loading || images.length === 0) return null
+
   return (
     <section className="entregas">
       <div className="container">
@@ -17,10 +32,12 @@ export default function Entregas() {
       <div className="entregas__gallery">
         {images.map((img) => (
           <div className="entregas__item" key={img.id}>
-            <img src={img.src} alt={img.label} loading="lazy" />
-            <div className="entregas__item-overlay">
-              <span>{img.label}</span>
-            </div>
+            <img src={img.imageUrl} alt={img.label || 'Entrega'} loading="lazy" />
+            {img.label && (
+              <div className="entregas__item-overlay">
+                <span>{img.label}</span>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -30,3 +47,4 @@ export default function Entregas() {
     </section>
   )
 }
+

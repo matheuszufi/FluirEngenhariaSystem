@@ -240,10 +240,44 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('/hero-bg.png');
+}
+
+.hero__slide {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center center;
-  background-attachment: fixed;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero__slide--active {
+  opacity: 1;
+}
+
+.hero__dots {
+  position: absolute;
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+}
+
+.hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero__dot--active {
+  background: #FF6500;
+  width: 24px;
 }
 
 .hero__overlay {

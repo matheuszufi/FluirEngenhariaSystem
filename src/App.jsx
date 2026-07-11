@@ -7,6 +7,8 @@ import FAQAdmin from './pages/FAQAdmin'
 import TestimonialsAdmin from './pages/TestimonialsAdmin'
 import PortfolioAdmin from './pages/PortfolioAdmin'
 import ClientsAdmin from './pages/ClientsAdmin'
+import HeroAdmin from './pages/HeroAdmin'
+import EntregasAdmin from './pages/EntregasAdmin'
 import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
@@ -22,6 +24,8 @@ function App() {
         <Route path="/dashboard/testimonials" element={<ProtectedRoute><TestimonialsAdmin /></ProtectedRoute>} />
         <Route path="/dashboard/portfolio" element={<ProtectedRoute><PortfolioAdmin /></ProtectedRoute>} />
         <Route path="/dashboard/clients" element={<ProtectedRoute><ClientsAdmin /></ProtectedRoute>} />
+        <Route path="/dashboard/hero" element={<ProtectedRoute><HeroAdmin /></ProtectedRoute>} />
+        <Route path="/dashboard/entregas" element={<ProtectedRoute><EntregasAdmin /></ProtectedRoute>} />
       </Routes>
     </HashRouter>
   )
