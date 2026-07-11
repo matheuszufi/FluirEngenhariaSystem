@@ -1,0 +1,73 @@
+/* Testimonials Admin specific styles — reuses faqadmin classes for layout */
+
+.ta__form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ta__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF6500, #ff9b44);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ta__meta {
+  display: block;
+  font-size: 0.75rem;
+  color: #FF6500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.ta__stars-display {
+  display: flex;
+  gap: 2px;
+  color: #FF6500;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+/* Star selector */
+.ta__stars-select {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.ta__star-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: rgba(255,255,255,0.2);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.15s ease, transform 0.15s ease;
+  padding: 0 2px;
+}
+
+.ta__star-btn--active {
+  color: #FF6500;
+}
+
+.ta__star-btn:hover {
+  color: #ff9b44;
+  transform: scale(1.15);
+}
+
+@media (max-width: 600px) {
+  .ta__form-grid {
+    grid-template-columns: 1fr;
+  }
+}

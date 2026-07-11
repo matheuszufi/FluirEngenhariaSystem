@@ -1,42 +1,33 @@
-import { useState } from 'react'
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Iago Pegnan',
-    company: 'MORFINS ENGENHARIA',
-    role: 'Diretor de Projetos',
-    text: 'A Fluir é um grande parceiro técnico e comercial da MORFINS. Em todas as obras de grande porte, sempre indicamos a Fluir para os nossos clientes. Diferentes múltiplos trabalhos em execução dos dias. A Fluir nos enquadrou muito bem no desenvolvimento deste projeto!',
-    stars: 5,
-    avatar: 'IP',
-  },
-  {
-    id: 2,
-    name: 'Carlos Andrade',
-    company: 'URBAN EDGE',
-    role: 'Engenheiro Responsável',
-    text: 'Trabalhar com a Fluir Engenharia foi uma experiência excepcional. A qualidade dos projetos BIM entregues superou nossas expectativas, com soluções eficientes que geraram grande economia na execução da obra.',
-    stars: 5,
-    avatar: 'CA',
-  },
-  {
-    id: 3,
-    name: 'Fernanda Lima',
-    company: 'PECCON',
-    role: 'Gestora de Projetos',
-    text: 'A equipe da Fluir demonstra um nível técnico impressionante. Os projetos hidráulicos entregues foram detalhados, bem compatibilizados e dentro do prazo acordado. Recomendo fortemente!',
-    stars: 5,
-    avatar: 'FL',
-  },
-]
+import { useState, useEffect } from 'react'
+import { ref, onValue } from 'firebase/database'
+import { rtdb } from '../firebase'
 
 export default function Testimonials() {
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
   const [current, setCurrent] = useState(0)
 
-  const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1))
-  const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1))
+  useEffect(() => {
+    const unsub = onValue(ref(rtdb, 'testimonials'), (snap) => {
+      if (snap.exists()) {
+        const data = Object.entries(snap.val())
+          .map(([id, v]) => ({ id, ...v }))
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+        setItems(data)
+        setCurrent(0)
+      } else {
+        setItems([])
+      }
+      setLoading(false)
+    })
+    return () => unsub()
+  }, [])
 
-  const t = testimonials[current]
+  if (loading || items.length === 0) return null
+
+  const t = items[current]
+  const prev = () => setCurrent((c) => (c === 0 ? items.length - 1 : c - 1))
+  const next = () => setCurrent((c) => (c === items.length - 1 ? 0 : c + 1))
 
   return (
     <section className="testimonials">
@@ -61,8 +52,8 @@ export default function Testimonials() {
               </div>
             </div>
             <div className="testimonials__stars">
-              {Array.from({ length: t.stars }).map((_, i) => (
-                <svg key={i} viewBox="0 0 24 24" fill="#FF6500" xmlns="http://www.w3.org/2000/svg">
+              {Array.from({ length: t.stars ?? 5 }).map((_, i) => (
+                <svg key={i} viewBox="0 0 24 24" fill="#FF6500">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
               ))}
@@ -78,7 +69,7 @@ export default function Testimonials() {
         </div>
 
         <div className="testimonials__dots">
-          {testimonials.map((_, i) => (
+          {items.map((_, i) => (
             <button
               key={i}
               className={`testimonials__dot${i === current ? ' testimonials__dot--active' : ''}`}
