@@ -19,7 +19,7 @@ export default function About() {
         </div>
         <div className="about__image">
           <img
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80"
+            src="/viniciusmelissa.jpg"
             alt="Equipe Fluir Engenharia"
           />
         </div>
