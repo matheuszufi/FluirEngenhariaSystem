@@ -686,6 +686,18 @@
   transition: color var(--transition);
 }
 
+.clients__logo-img {
+  max-width: 100%;
+  max-height: 44px;
+  object-fit: contain;
+  filter: grayscale(40%) opacity(0.7);
+  transition: all var(--transition);
+}
+
+.clients__logo:hover .clients__logo-img {
+  filter: grayscale(0%) opacity(1);
+}
+
 .clients__logo:hover span {
   color: var(--primary);
 }
