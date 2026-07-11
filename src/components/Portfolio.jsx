@@ -1,28 +1,28 @@
-const projects = [
-  {
-    id: 1,
-    name: 'Vilas Alameda',
-    client: 'LJETS INC.',
-    tag: 'Residencial',
-    img: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 2,
-    name: 'Conjunto RG',
-    client: 'DANCON',
-    tag: 'Residencial',
-    img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80',
-  },
-  {
-    id: 3,
-    name: 'GR Peccon',
-    client: 'PECCON',
-    tag: 'Comercial',
-    img: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=600&q=80',
-  },
-]
+import { useState, useEffect } from 'react'
+import { ref, onValue } from 'firebase/database'
+import { rtdb } from '../firebase'
 
 export default function Portfolio() {
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const unsub = onValue(ref(rtdb, 'portfolio'), (snap) => {
+      if (snap.exists()) {
+        const items = Object.entries(snap.val())
+          .map(([id, v]) => ({ id, ...v }))
+          .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+        setProjects(items)
+      } else {
+        setProjects([])
+      }
+      setLoading(false)
+    })
+    return () => unsub()
+  }, [])
+
+  if (loading || projects.length === 0) return null
+
   return (
     <section className="portfolio" id="portfolio">
       <div className="container">
@@ -34,8 +34,11 @@ export default function Portfolio() {
           {projects.map((p) => (
             <div className="portfolio__card" key={p.id}>
               <div className="portfolio__img-wrap">
-                <img src={p.img} alt={p.name} loading="lazy" />
-                <span className="portfolio__tag">{p.tag}</span>
+                {p.imageUrl
+                  ? <img src={p.imageUrl} alt={p.name} loading="lazy" />
+                  : <div className="portfolio__img-placeholder" />
+                }
+                {p.tag && <span className="portfolio__tag">{p.tag}</span>}
               </div>
               <div className="portfolio__info">
                 <h3 className="portfolio__name">{p.name}</h3>

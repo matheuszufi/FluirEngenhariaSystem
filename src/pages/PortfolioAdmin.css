@@ -1,0 +1,254 @@
+/* ============================================================
+   PORTFOLIO ADMIN
+   ============================================================ */
+
+/* Grid layout: add form spans full width, cards in 3 cols */
+.pa__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.pa__card-form {
+  grid-column: 1 / -1;
+}
+
+/* Project card */
+.pa__card {
+  background: #0d1e35;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.pa__card:hover {
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+.pa__card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background: #071528;
+}
+
+.pa__card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pa__card:hover .pa__card-img img {
+  transform: scale(1.04);
+}
+
+.pa__card-no-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.2);
+  font-size: 0.75rem;
+}
+
+.pa__card-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #FF6500;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pa__card-body {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pa__card-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.pa__card-name {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pa__card-client {
+  color: #FF6500;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Form grid (fields + image side by side) */
+.pa__form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 4px;
+}
+
+.pa__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Select */
+.pa__select {
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.88rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.pa__select:focus {
+  outline: none;
+  border-color: #FF6500;
+}
+
+.pa__select option {
+  background: #0d1e35;
+  color: #fff;
+}
+
+/* Image upload area */
+.pa__upload-area {
+  width: 100%;
+}
+
+.pa__upload-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 180px;
+  background: rgba(255,255,255,0.03);
+  border: 2px dashed rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease;
+  text-align: center;
+  padding: 16px;
+}
+
+.pa__upload-btn span {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.pa__upload-btn small {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.25);
+}
+
+.pa__upload-btn:hover {
+  border-color: rgba(255,101,0,0.4);
+  background: rgba(255,101,0,0.05);
+  color: rgba(255,255,255,0.65);
+}
+
+/* Preview */
+.pa__preview {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.pa__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pa__preview-remove,
+.pa__preview-change {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pa__preview-remove {
+  font-size: 1rem;
+  padding: 2px 8px;
+  line-height: 1.4;
+}
+
+.pa__preview-remove:hover { background: #dc2626; }
+.pa__preview-change:hover { background: #FF6500; }
+
+.pa__url-hint {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.pa__url-error {
+  font-size: 0.78rem;
+  color: #f87171;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pa__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pa__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pa__form-grid {
+    grid-template-columns: 1fr;
+  }
+}
