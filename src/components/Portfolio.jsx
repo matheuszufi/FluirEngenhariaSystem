@@ -48,7 +48,7 @@ export default function Portfolio() {
           ))}
         </div>
         <div className="portfolio__cta">
-          <a href="#contato" className="btn btn--outline-light">VER TODOS OS PROJETOS</a>
+          <a href="/" className="btn btn--outline-light" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>VER TODOS OS PROJETOS</a>
         </div>
       </div>
     </section>

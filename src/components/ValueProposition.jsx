@@ -34,7 +34,7 @@ export default function ValueProposition() {
               Projetos com soluções eficientes de engenharia
             </li>
           </ul>
-          <a href="#contato" className="btn btn--primary">FALAR COM ESPECIALISTA</a>
+          <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALAR COM ESPECIALISTA</a>
         </div>
         <div className="value-prop__image">
           <img

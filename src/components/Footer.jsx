@@ -3,15 +3,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__container">
         <div className="footer__brand">
-          <a href="#home" className="footer__logo">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <path d="M16 2C16 2 4 10 4 20C4 26.627 9.373 32 16 32C22.627 32 28 26.627 28 20C28 10 16 2 16 2Z" fill="#FF6500"/>
-              <path d="M16 8C16 8 9 14 9 20C9 23.866 12.134 27 16 27C19.866 27 23 23.866 23 20C23 14 16 8 16 8Z" fill="white" fillOpacity="0.2"/>
-            </svg>
-            <div>
-              <span className="footer__logo-name">FLUIR</span>
-              <span className="footer__logo-sub">Engenharia</span>
-            </div>
+          <a href="/" className="footer__logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+            <img src={`${import.meta.env.BASE_URL}logofluir.png`} alt="Fluir Engenharia" className="footer__logo-img" />
           </a>
           <address className="footer__address">
             <p>Av. Exemplo, 123 – Sala 45</p>
@@ -24,12 +17,12 @@ export default function Footer() {
         <div className="footer__links">
           <h4 className="footer__heading">Mapa do site</h4>
           <nav>
-            <a href="#home">Início</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#portfolio">Portfólio</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contato">Contato</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Início</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' }) }}>Sobre</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' }) }}>Serviços</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }) }}>Portfólio</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }) }}>FAQ</a>
+            <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>Contato</a>
           </nav>
         </div>
 

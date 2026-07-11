@@ -15,7 +15,7 @@ export default function About() {
             Com uma equipe experiente e comprometida, fornecemos serviços de alta qualidade que otimizam
             processos e potencializam resultados técnicos em todos os nichos das obras.
           </p>
-          <a href="#contato" className="btn btn--primary">FALE COM A GENTE</a>
+          <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALE COM A GENTE</a>
         </div>
         <div className="about__image">
           <img

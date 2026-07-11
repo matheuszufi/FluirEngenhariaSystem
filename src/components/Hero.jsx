@@ -56,7 +56,7 @@ export default function Hero() {
             residenciais e comerciais. Entregamos soluções eficientes,
             compatibilizadas e dentro do prazo.
           </p>
-          <a href="#contato" className="btn btn--primary">FALE CONOSCO</a>
+          <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALE CONOSCO</a>
         </div>
       </div>
 

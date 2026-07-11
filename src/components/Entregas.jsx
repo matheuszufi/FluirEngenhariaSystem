@@ -42,7 +42,7 @@ export default function Entregas() {
         ))}
       </div>
       <div className="container entregas__cta">
-        <a href="#contato" className="btn btn--primary">SOLICITAR PROPOSTA</a>
+        <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>SOLICITAR PROPOSTA</a>
       </div>
     </section>
   )

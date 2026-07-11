@@ -6,16 +6,16 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <a href="#home" className="header__logo">
+        <a href="/" className="header__logo" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
           <img src={`${import.meta.env.BASE_URL}logofluir.png`} alt="Fluir Engenharia" className="header__logo-img" />
         </a>
 
         <nav className={`header__nav${menuOpen ? ' header__nav--open' : ''}`}>
-          <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre</a>
-          <a href="#servicos" onClick={() => setMenuOpen(false)}>Serviços</a>
-          <a href="#portfolio" onClick={() => setMenuOpen(false)}>Portfólio</a>
-          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
-          <a href="#contato" onClick={() => setMenuOpen(false)}>Contato</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('sobre')?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false) }}>Sobre</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false) }}>Serviços</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false) }}>Portfólio</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false) }}>FAQ</a>
+          <a href="/" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false) }}>Contato</a>
         </nav>
 
         <a href="tel:+5511999999999" className="header__cta">

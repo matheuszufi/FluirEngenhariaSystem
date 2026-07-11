@@ -1198,6 +1198,12 @@
   margin-bottom: 20px;
 }
 
+.footer__logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
 .footer__logo-name {
   display: block;
   font-size: 1.2rem;

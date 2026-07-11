@@ -80,7 +80,7 @@ export default function Testimonials() {
         </div>
 
         <div className="testimonials__cta">
-          <a href="#contato" className="btn btn--primary">JUNTE-SE A ELES</a>
+          <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>JUNTE-SE A ELES</a>
         </div>
       </div>
     </section>
