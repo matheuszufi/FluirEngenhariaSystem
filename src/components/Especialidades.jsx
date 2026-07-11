@@ -9,6 +9,7 @@ const especialidades = [
       </svg>
     ),
     title: 'Hidrossanitário',
+    topics: ['Aprovativos', 'Pressurização', 'Cisternas potáveis e não potáveis', 'Água quente (passagem e acumulação)', 'Sanitário, gordura e ventilação', 'Drenagem e bacias de contenção'],
   },
   {
     icon: (
@@ -21,6 +22,7 @@ const especialidades = [
       </svg>
     ),
     title: 'Gás',
+    topics: ['Centrais', 'Reguladores de pressão', 'Medidores', 'Redes e consumo'],
   },
   {
     icon: (
@@ -35,6 +37,7 @@ const especialidades = [
       </svg>
     ),
     title: 'Incêndio',
+    topics: ['Aprovativos', 'Hidrantes', 'Sprinklers'],
   },
   {
     icon: (
@@ -50,6 +53,7 @@ const especialidades = [
       </svg>
     ),
     title: 'Piscina',
+    topics: ['Filtragem', 'Aquecimento', 'Hidromassagem', 'Borda infinita', 'Cascata'],
   },
 ]
 
@@ -64,6 +68,13 @@ export default function Especialidades() {
             <div className="especialidades__card" key={item.title}>
               <div className="especialidades__icon">{item.icon}</div>
               <h3 className="especialidades__name">{item.title}</h3>
+              {item.topics && (
+                <ul className="especialidades__topics">
+                  {item.topics.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
