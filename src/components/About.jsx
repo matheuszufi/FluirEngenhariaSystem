@@ -19,7 +19,7 @@ export default function About() {
         </div>
         <div className="about__image">
           <img
-            src="/viniciusmelissa.jpg"
+            src={`${import.meta.env.BASE_URL}viniciusmelissa.jpg`}
             alt="Equipe Fluir Engenharia"
           />
         </div>

@@ -39,7 +39,7 @@ export default function Hero() {
           />
         ))
       ) : (
-        <div className="hero__slide hero__slide--active" style={{ backgroundImage: "url('/hero-bg.png')" }} />
+        <div className="hero__slide hero__slide--active" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}hero-bg.png')` }} />
       )}
 
       <div className="hero__overlay" />

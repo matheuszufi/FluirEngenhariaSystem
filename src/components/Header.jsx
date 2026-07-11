@@ -7,7 +7,7 @@ export default function Header() {
     <header className="header">
       <div className="header__container">
         <a href="#home" className="header__logo">
-          <img src="/logofluir.png" alt="Fluir Engenharia" className="header__logo-img" />
+          <img src={`${import.meta.env.BASE_URL}logofluir.png`} alt="Fluir Engenharia" className="header__logo-img" />
         </a>
 
         <nav className={`header__nav${menuOpen ? ' header__nav--open' : ''}`}>
