@@ -7,10 +7,9 @@ export default function Footer() {
             <img src={`${import.meta.env.BASE_URL}logofluir.png`} alt="Fluir Engenharia" className="footer__logo-img" />
           </a>
           <address className="footer__address">
-            <p>Av. Exemplo, 123 – Sala 45</p>
-            <p>Curitiba – PR, 80000-000</p>
-            <p>(41) 9 9999-9999</p>
-            <p>contato@fluirengenharia.com.br</p>
+            <p>Londrina – PR</p>
+            <p>(43) 9 9997-0284</p>
+            <p>vinicius@fluirengenharia.onmicrosoft.com</p>
           </address>
         </div>
 
