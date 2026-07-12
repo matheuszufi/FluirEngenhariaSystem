@@ -34,10 +34,10 @@ export default function Entregas() {
           <div className="entregas__item" key={img.id}>
             {img.type === 'video' ? (
               <iframe
-                src={img.imageUrl}
+                src={`${img.imageUrl}${img.imageUrl.includes('?') ? '&' : '?'}autoplay=1&mute=1`}
                 title={img.label || 'Vídeo'}
                 className="entregas__video"
-                allow="autoplay"
+                allow="autoplay; fullscreen"
                 allowFullScreen
               />
             ) : (
