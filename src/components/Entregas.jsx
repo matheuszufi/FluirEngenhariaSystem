@@ -2,9 +2,12 @@ import { useState, useEffect } from 'react'
 import { ref, onValue } from 'firebase/database'
 import { rtdb } from '../firebase'
 
+
+
 export default function Entregas() {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
+
 
   useEffect(() => {
     const unsub = onValue(ref(rtdb, 'entregas'), (snap) => {
@@ -31,10 +34,14 @@ export default function Entregas() {
       </div>
       <div className="entregas__gallery">
         {images.map((img) => (
-          <div className="entregas__item" key={img.id}>
+          <div
+            className="entregas__item"
+            key={img.id}
+            
+          >
             {img.type === 'video' ? (
               <iframe
-                src={`${img.imageUrl}${img.imageUrl.includes('?') ? '&' : '?'}autoplay=1&mute=1`}
+                src={`${img.imageUrl}${img.imageUrl.includes('?') ? '&' : '?'}autoplay=1`}
                 title={img.label || 'Vídeo'}
                 className="entregas__video"
                 allow="autoplay; fullscreen"
@@ -48,13 +55,17 @@ export default function Entregas() {
                 <span>{img.label}</span>
               </div>
             )}
+            
           </div>
         ))}
       </div>
       <div className="container entregas__cta">
         <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>SOLICITAR PROPOSTA</a>
       </div>
+
+    
     </section>
   )
 }
+
 
