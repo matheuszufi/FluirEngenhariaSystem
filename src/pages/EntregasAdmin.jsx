@@ -4,40 +4,72 @@ import { rtdb } from '../firebase'
 import DashboardLayout from '../components/DashboardLayout'
 import './HeroAdmin.css'
 
-const emptyForm = { imageUrl: '', label: '' }
+const emptyForm = { imageUrl: '', label: '', type: 'image' }
 
-function toDirectUrl(raw) {
+function toDirectUrl(raw, type = 'image') {
   if (!raw) return raw
   const match = raw.match(/\/d\/([a-zA-Z0-9_-]+)/)
-  if (match) return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`
+  if (match) {
+    if (type === 'video') return `https://drive.google.com/file/d/${match[1]}/preview`
+    return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`
+  }
   return raw
 }
 
-function ImageForm({ form, setForm, onSave, onCancel, label, saving }) {
-  const [imgError, setImgError] = useState(false)
+function MediaForm({ form, setForm, onSave, onCancel, label, saving }) {
+  const [mediaError, setMediaError] = useState(false)
+
+  const handleTypeChange = (type) => {
+    setForm({ ...form, type, imageUrl: '' })
+    setMediaError(false)
+  }
+
+  const handleUrl = (raw) => {
+    setMediaError(false)
+    setForm({ ...form, imageUrl: toDirectUrl(raw, form.type) })
+  }
+
   return (
     <div className="faqadmin__form">
+      <div className="ea__type-toggle">
+        <button type="button"
+          className={`ea__type-btn${form.type !== 'video' ? ' ea__type-btn--active' : ''}`}
+          onClick={() => handleTypeChange('image')}>
+          🖼️ Imagem
+        </button>
+        <button type="button"
+          className={`ea__type-btn${form.type === 'video' ? ' ea__type-btn--active' : ''}`}
+          onClick={() => handleTypeChange('video')}>
+          🎬 Vídeo
+        </button>
+      </div>
       <div className="ha__form-grid">
         <div className="faqadmin__field ha__url-field">
-          <label>URL da imagem *</label>
+          <label>URL {form.type === 'video' ? 'do vídeo' : 'da imagem'} *</label>
           <input
             type="url"
             placeholder="Cole o link do Google Drive…"
             value={form.imageUrl}
-            onChange={(e) => { setImgError(false); setForm({ ...form, imageUrl: toDirectUrl(e.target.value) }) }}
+            onChange={(e) => handleUrl(e.target.value)}
             autoFocus
           />
           <span className="pa__url-hint">
             Google Drive: Compartilhar → <strong>Qualquer pessoa com o link</strong> → cole aqui
           </span>
-          {form.imageUrl && !imgError && (
-            <div className="ha__img-preview">
-              <img src={form.imageUrl} alt="preview"
-                onError={() => setImgError(true)} onLoad={() => setImgError(false)} />
-            </div>
+          {form.imageUrl && !mediaError && (
+            form.type === 'video' ? (
+              <div className="ha__img-preview ha__video-preview">
+                <iframe src={form.imageUrl} title="preview" allow="autoplay" />
+              </div>
+            ) : (
+              <div className="ha__img-preview">
+                <img src={form.imageUrl} alt="preview"
+                  onError={() => setMediaError(true)} onLoad={() => setMediaError(false)} />
+              </div>
+            )
           )}
-          {form.imageUrl && imgError && (
-            <p className="pa__url-error">Imagem não carregou. Verifique as permissões de compartilhamento.</p>
+          {form.imageUrl && mediaError && (
+            <p className="pa__url-error">Mídia não carregou. Verifique as permissões de compartilhamento.</p>
           )}
         </div>
         <div className="faqadmin__field">
@@ -48,7 +80,7 @@ function ImageForm({ form, setForm, onSave, onCancel, label, saving }) {
             value={form.label}
             onChange={(e) => setForm({ ...form, label: e.target.value })}
           />
-          <span className="pa__url-hint">Texto exibido ao passar o mouse sobre a imagem</span>
+          <span className="pa__url-hint">Texto exibido ao passar o mouse</span>
         </div>
       </div>
       <div className="faqadmin__form-actions">
@@ -109,6 +141,7 @@ export default function EntregasAdmin() {
     await push(ref(rtdb, 'entregas'), {
       imageUrl: addForm.imageUrl.trim(),
       label: addForm.label.trim(),
+      type: addForm.type,
       order: items.length,
     })
     cancelAdd()
@@ -118,7 +151,7 @@ export default function EntregasAdmin() {
   /* ── EDIT ── */
   const startEdit = (item) => {
     setEditingId(item.id)
-    setEditForm({ imageUrl: item.imageUrl, label: item.label ?? '' })
+    setEditForm({ imageUrl: item.imageUrl, label: item.label ?? '', type: item.type ?? 'image' })
     setAdding(false)
   }
   const cancelEdit = () => { setEditingId(null); setEditForm(emptyForm) }
@@ -128,6 +161,7 @@ export default function EntregasAdmin() {
     await update(ref(rtdb, `entregas/${id}`), {
       imageUrl: editForm.imageUrl.trim(),
       label: editForm.label.trim(),
+      type: editForm.type,
     })
     cancelEdit()
     setSaving(false)
@@ -145,8 +179,8 @@ export default function EntregasAdmin() {
         <div>
           <h1 className="dash__header-title">Nossas Entregas</h1>
           <p className="dash__header-sub">
-            Gerencie as imagens exibidas na galeria do site.
-            {!loading && <> <strong>{items.length} imagem(ns)</strong></>}
+            Gerencie as imagens e vídeos exibidos na galeria do site.
+            {!loading && <> <strong>{items.length} item(ns)</strong></>}
           </p>
         </div>
         {!adding && (
@@ -168,8 +202,8 @@ export default function EntregasAdmin() {
 
           {adding && (
             <div className="faqadmin__card faqadmin__card--new">
-              <div className="faqadmin__card-badge">Nova imagem</div>
-              <ImageForm form={addForm} setForm={setAddForm} onSave={saveAdd} onCancel={cancelAdd} label="Salvar imagem" saving={saving} />
+              <div className="faqadmin__card-badge">Novo item</div>
+              <MediaForm form={addForm} setForm={setAddForm} onSave={saveAdd} onCancel={cancelAdd} label="Salvar" saving={saving} />
             </div>
           )}
 
@@ -187,13 +221,22 @@ export default function EntregasAdmin() {
           {items.map((item, index) => (
             editingId === item.id ? (
               <div key={item.id} className="faqadmin__card faqadmin__card--editing">
-                <ImageForm form={editForm} setForm={setEditForm} onSave={() => saveEdit(item.id)} onCancel={cancelEdit} label="Salvar alterações" saving={saving} />
+                <MediaForm form={editForm} setForm={setEditForm} onSave={() => saveEdit(item.id)} onCancel={cancelEdit} label="Salvar alterações" saving={saving} />
               </div>
             ) : (
               <div key={item.id} className="ha__card">
                 <div className="ha__card-thumb">
-                  <img src={item.imageUrl} alt={item.label || `Imagem ${index + 1}`} loading="lazy"
-                    onError={(e) => { e.target.style.display = 'none' }} />
+                  {item.type === 'video' ? (
+                    <div className="ha__card-video-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="28" height="28">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                      </svg>
+                      <span>Vídeo</span>
+                    </div>
+                  ) : (
+                    <img src={item.imageUrl} alt={item.label || `Item ${index + 1}`} loading="lazy"
+                      onError={(e) => { e.target.style.display = 'none' }} />
+                  )}
                   <span className="ha__card-num">{index + 1}</span>
                 </div>
                 <div className="ha__card-info">

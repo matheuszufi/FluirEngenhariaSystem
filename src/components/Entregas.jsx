@@ -32,8 +32,18 @@ export default function Entregas() {
       <div className="entregas__gallery">
         {images.map((img) => (
           <div className="entregas__item" key={img.id}>
-            <img src={img.imageUrl} alt={img.label || 'Entrega'} loading="lazy" />
-            {img.label && (
+            {img.type === 'video' ? (
+              <iframe
+                src={img.imageUrl}
+                title={img.label || 'Vídeo'}
+                className="entregas__video"
+                allow="autoplay"
+                allowFullScreen
+              />
+            ) : (
+              <img src={img.imageUrl} alt={img.label || 'Entrega'} loading="lazy" />
+            )}
+            {img.label && img.type !== 'video' && (
               <div className="entregas__item-overlay">
                 <span>{img.label}</span>
               </div>

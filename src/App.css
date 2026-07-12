@@ -551,6 +551,13 @@
   font-weight: 500;
 }
 
+.entregas__video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: auto;
+}
+
 .entregas__cta {
   display: flex;
   justify-content: center;
