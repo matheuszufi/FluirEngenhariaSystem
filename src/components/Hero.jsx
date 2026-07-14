@@ -57,6 +57,7 @@ export default function Hero() {
             compatibilizadas e dentro do prazo.
           </p>
           <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALE CONOSCO</a>
+          <a href="/" className="btn btn--outline-white" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}}>VER PROJETOS</a>
         </div>
       </div>
 

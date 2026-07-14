@@ -393,6 +393,26 @@
   flex-shrink: 0;
 }
 
+.hero__buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.btn--outline-white {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  margin-left: 12px;
+  transition: all .3s ease;
+}
+
+.btn--outline-white:hover {
+  background: #fff;
+  color: #032758; /* azul da identidade visual */
+}
+
 /* ============================================================
    ESPECIALIDADES
    ============================================================ */
@@ -1607,6 +1627,12 @@
    RESPONSIVE — SMALL MOBILE (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
+
+  .btn--outline-white {
+  margin-left: 0px;
+  margin-top: 12px;
+}
+
   .especialidades__grid {
     grid-template-columns: 1fr 1fr;
     gap: 14px;
