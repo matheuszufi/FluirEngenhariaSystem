@@ -46,7 +46,7 @@ export default function Hero() {
 
       <div className="hero__container">
         <div className="hero__content">
-          <p className="hero__tag">Projetos em BIM</p>
+          {/* <p className="hero__tag">Projetos em BIM</p> */}
           <h1 className="hero__title">
             Projetos Hidráulicos<br />
             Prediais em <span className="hero__title--accent">BIM</span>

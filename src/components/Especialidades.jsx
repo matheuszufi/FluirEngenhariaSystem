@@ -61,8 +61,10 @@ export default function Especialidades() {
   return (
     <section className="especialidades" id="servicos">
       <div className="container">
-        <p className="section-tag">O que fazemos</p>
-        <h2 className="section-title">Nossas especialidades</h2>
+          <div className="especialidades__header">
+          <p className="section-tag">O que fazemos</p>
+          <h2 className="section-title">Nossas especialidades</h2>
+        </div>
         <div className="especialidades__grid">
           {especialidades.map((item) => (
             <div className="especialidades__card" key={item.title}>

@@ -26,7 +26,7 @@ export default function Portfolio() {
   return (
     <section className="portfolio" id="portfolio">
       <div className="container">
-        <p className="section-tag section-tag--light">Portfólio</p>
+        <p className="section-tag section-tag--light">Projetos em destaque</p>
         <h2 className="section-title section-title--light">
           Nossos projetos falam por si.
         </h2>

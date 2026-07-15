@@ -70,7 +70,7 @@
 }
 
 .btn--primary {
-  background: var(--primary);
+  background: rgb(255,101,0);
   color: var(--white);
 }
 
@@ -337,9 +337,9 @@
   margin-bottom: 24px;
 }
 
-.hero__title--accent {
+/* .hero__title--accent {
   color: var(--primary);
-}
+} */
 
 .hero__subtitle {
   color: rgba(255,255,255,0.68);
@@ -489,6 +489,11 @@
   border-radius: 50%;
   background: var(--primary);
   flex-shrink: 0;
+}
+
+.especialidades .section-tag,
+.especialidades .section-title {
+  text-align: center;
 }
 
 /* ============================================================
