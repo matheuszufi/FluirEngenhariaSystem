@@ -2,58 +2,117 @@ const especialidades = [
   {
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="28" fill="#FF650015"/>
-        <path d="M32 12C32 12 20 22 20 34C20 40.627 25.373 46 32 46C38.627 46 44 40.627 44 34C44 22 32 12 32 12Z" fill="#FF6500" opacity="0.8"/>
-        <path d="M32 20C32 20 26 27 26 34C26 37.314 28.686 40 32 40C35.314 40 38 37.314 38 34C38 27 32 20 32 20Z" fill="white" opacity="0.9"/>
-        <rect x="20" y="47" width="24" height="4" rx="2" fill="#FF6500"/>
+        <circle cx="32" cy="32" r="28" fill="#FF650015" />
+        <path
+          d="M32 14C32 14 20 27 20 37C20 43.627 25.373 49 32 49C38.627 49 44 43.627 44 37C44 27 32 14 32 14Z"
+          fill="#99592f"
+        />
+        <path
+          d="M27 37C27 34 28.5 31 31 28"
+          stroke="white"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     title: 'Hidrossanitário',
-    topics: ['Aprovativos', 'Pressurização', 'Cisternas potáveis e não potáveis', 'Água quente (passagem e acumulação)', 'Sanitário, gordura e ventilação', 'Drenagem e bacias de contenção'],
+    topics: [
+      'Aprovativos',
+      'Pressurização',
+      'Cisternas potáveis e não potáveis',
+      'Água quente (passagem e acumulação)',
+      'Sanitário, gordura e ventilação',
+      'Drenagem e bacias de contenção',
+    ],
   },
   {
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="28" fill="#FF650015"/>
-        <path d="M32 14C32 14 24 22 24 30C24 32 25 34 27 35C27 29 30 25 32 23C34 25 37 29 37 35C39 34 40 32 40 30C40 22 32 14 32 14Z" fill="#FF6500"/>
-        <path d="M32 24C32 24 28 28 28 34C28 37.314 29.686 40 32 40C34.314 40 36 37.314 36 34C36 28 32 24 32 24Z" fill="#FF6500" opacity="0.5"/>
-        <rect x="30" y="40" width="4" height="10" rx="2" fill="#FF6500"/>
-        <rect x="24" y="47" width="16" height="3" rx="1.5" fill="#FF6500"/>
+        <circle cx="32" cy="32" r="28" fill="#99592f15" />
+        <path
+          d="M32 14C36 20 44 25 44 35C44 42 38.6 48 32 48C25.4 48 20 42 20 35C20 28 24 23 28 19C28 24 30 26 32 27C33 24 33 19 32 14Z"
+          fill="#99592f"
+        />
+        <path
+          d="M32 27C35 30 37 33 37 36C37 39 34.8 42 32 42C29.2 42 27 39 27 36C27 33.5 29 30.5 32 27Z"
+          fill="white"
+        />
       </svg>
     ),
     title: 'Gás',
-    topics: ['Centrais', 'Reguladores de pressão', 'Medidores', 'Redes e consumo'],
+    topics: [
+      'Centrais',
+      'Reguladores de pressão',
+      'Medidores',
+      'Redes e consumo',
+    ],
   },
   {
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="28" fill="#FF650015"/>
-        <circle cx="32" cy="28" r="8" fill="#FF6500"/>
-        <rect x="30" y="36" width="4" height="14" rx="2" fill="#FF6500"/>
-        <path d="M18 34H46" stroke="#FF6500" strokeWidth="2.5" strokeLinecap="round"/>
-        <path d="M14 44C14 44 18 38 24 38" stroke="#FF6500" strokeWidth="2.5" strokeLinecap="round"/>
-        <path d="M50 44C50 44 46 38 40 38" stroke="#FF6500" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="32" cy="28" r="4" fill="white"/>
+        <circle cx="32" cy="32" r="28" fill="#FF650015" />
+
+        <rect x="26" y="22" width="12" height="24" rx="4" fill="#99592f" />
+        <rect x="22" y="18" width="20" height="6" rx="3" fill="#99592f" />
+        <rect x="29" y="14" width="6" height="6" rx="3" fill="#99592f" />
+
+        <circle cx="21" cy="31" r="4" fill="#99592f" />
+        <circle cx="43" cy="31" r="4" fill="#99592f" />
+
+        <rect x="24" y="46" width="16" height="4" rx="2" fill="#99592f" />
       </svg>
     ),
     title: 'Incêndio',
-    topics: ['Aprovativos', 'Hidrantes', 'Sprinklers'],
+    topics: [
+      'Aprovativos',
+      'Hidrantes',
+      'Sprinklers',
+    ],
   },
   {
     icon: (
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="28" fill="#FF650015"/>
-        <rect x="14" y="28" width="36" height="22" rx="4" fill="#FF6500" opacity="0.2"/>
-        <rect x="14" y="28" width="36" height="22" rx="4" stroke="#FF6500" strokeWidth="2.5"/>
-        <path d="M20 28V24C20 18.477 24.477 14 30 14H34C39.523 14 44 18.477 44 24V28" stroke="#FF6500" strokeWidth="2.5" strokeLinecap="round"/>
-        <circle cx="26" cy="39" r="3" fill="#FF6500"/>
-        <circle cx="38" cy="39" r="3" fill="#FF6500"/>
-        <path d="M26 42V46" stroke="#FF6500" strokeWidth="2" strokeLinecap="round"/>
-        <path d="M38 42V46" stroke="#FF6500" strokeWidth="2" strokeLinecap="round"/>
+        <circle cx="32" cy="32" r="28" fill="#99592f15" />
+
+        {/* Escada */}
+        <path
+          d="M18 28V46"
+          stroke="#99592f"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path
+          d="M24 28V46"
+          stroke="#99592f"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+        <path d="M18 32H24" stroke="#99592f" strokeWidth="3" />
+        <path d="M18 38H24" stroke="#99592f" strokeWidth="3" />
+
+        {/* Água */}
+        <path
+          d="M28 42C31 40 34 44 37 42C40 40 43 44 46 42"
+          stroke="#99592f"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+        />
+        <path
+          d="M28 47C31 45 34 49 37 47C40 45 43 49 46 47"
+          stroke="#99592f"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+        />
       </svg>
     ),
     title: 'Piscina',
-    topics: ['Filtragem', 'Aquecimento', 'Hidromassagem', 'Borda infinita', 'Cascata'],
+    topics: [
+      'Filtragem',
+      'Aquecimento',
+      'Hidromassagem',
+      'Borda infinita',
+      'Cascata',
+    ],
   },
 ]
 
@@ -61,22 +120,27 @@ export default function Especialidades() {
   return (
     <section className="especialidades" id="servicos">
       <div className="container">
-          <div className="especialidades__header">
+        <div className="especialidades__header">
           <p className="section-tag">O que fazemos</p>
           <h2 className="section-title">Nossas especialidades</h2>
         </div>
+
         <div className="especialidades__grid">
           {especialidades.map((item) => (
             <div className="especialidades__card" key={item.title}>
-              <div className="especialidades__icon">{item.icon}</div>
-              <h3 className="especialidades__name">{item.title}</h3>
-              {item.topics && (
-                <ul className="especialidades__topics">
-                  {item.topics.map((t) => (
-                    <li key={t}>{t}</li>
-                  ))}
-                </ul>
-              )}
+              <div className="especialidades__icon">
+                {item.icon}
+              </div>
+
+              <h3 className="especialidades__name">
+                {item.title}
+              </h3>
+
+              <ul className="especialidades__topics">
+                {item.topics.map((topic) => (
+                  <li key={topic}>{topic}</li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
