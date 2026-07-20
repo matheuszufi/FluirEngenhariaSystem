@@ -36,12 +36,12 @@ export default function ValueProposition() {
           </ul>
           <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALAR COM ESPECIALISTA</a>
         </div>
-        <div className="value-prop__image">
+        {/* <div className="value-prop__image">
           <img
             src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=80"
             alt="Engenheiros trabalhando em projeto BIM"
           />
-        </div>
+        </div> */}
       </div>
     </section>
   )

@@ -721,20 +721,23 @@
    ============================================================ */
 .value-prop {
   padding: 100px 0;
-  background: var(--white);
+  background: var(--dark);
 }
 
 .value-prop__container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.value-prop__content {
+  max-width: 800px;
+  text-align: center;
 }
 
 .value-prop__title {
   font-size: clamp(1.6rem, 2.5vw, 2.2rem);
   font-weight: 700;
-  color: var(--text);
+  color: var(--white);
   line-height: 1.35;
   margin-bottom: 40px;
 }
@@ -749,6 +752,7 @@
   flex-direction: column;
   gap: 22px;
   margin-bottom: 44px;
+  align-items: center; /* Centraliza os itens */
 }
 
 .value-prop__item {
@@ -756,7 +760,7 @@
   align-items: center;
   gap: 16px;
   font-size: 1rem;
-  color: var(--text);
+  color: var(--white);
   font-weight: 500;
 }
 
@@ -776,7 +780,6 @@
   width: 14px;
   height: 14px;
 }
-
 .value-prop__image {
   border-radius: 16px;
   overflow: hidden;
