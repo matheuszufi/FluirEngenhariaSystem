@@ -32,7 +32,7 @@ export default function Entregas() {
     <>
       <section className="entregas">
         <div className="container">
-          <p className="section-tag">Resultados</p>
+          {/* <p className="section-tag">Resultados</p> */}
           <h2 className="section-title">Nossas entregas</h2>
         </div>
 

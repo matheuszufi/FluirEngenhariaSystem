@@ -38,7 +38,7 @@ export default function Portfolio() {
                   ? <img src={p.imageUrl} alt={p.name} loading="lazy" />
                   : <div className="portfolio__img-placeholder" />
                 }
-                {p.tag && <span className="portfolio__tag">{p.tag}</span>}
+                {/* {p.tag && <span className="portfolio__tag">{p.tag}</span>} */}
               </div>
               <div className="portfolio__info">
                 <h3 className="portfolio__name">{p.name}</h3>
@@ -47,9 +47,9 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
-        <div className="portfolio__cta">
+        {/* <div className="portfolio__cta">
           <a href="/" className="btn btn--outline-light" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>VER TODOS OS PROJETOS</a>
-        </div>
+        </div> */}
       </div>
     </section>
   )

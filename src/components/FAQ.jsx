@@ -28,7 +28,7 @@ export default function FAQ() {
     <section className="faq" id="faq">
       <div className="container faq__container">
         <div className="faq__header">
-          <p className="section-tag">Dúvidas</p>
+          <p className="section-tag">FAQ</p>
           <h2 className="section-title">Perguntas frequentes</h2>
         </div>
         <div className="faq__list">

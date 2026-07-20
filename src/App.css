@@ -248,11 +248,17 @@
   flex-direction: column;
 }
 
+.hero__top {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
 .hero__slide {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center center;
+  background-position: center bottom;
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
 }
@@ -300,7 +306,7 @@
 .hero__container {
   position: relative;
   z-index: 1;
-  flex: 1;
+  height: 100%;
   width: 100%;
   padding: 0 clamp(24px, 8vw, 140px);
   padding-top: 72px;
@@ -311,7 +317,8 @@
 
 .hero__content {
   max-width: 620px;
-  padding: 80px 0;
+  padding: 160px 0px;
+  margin-left: 120px;
   text-align: left;
 }
 
@@ -352,14 +359,15 @@
 .hero__stats {
   position: relative;
   z-index: 1;
-  background: rgba(7,20,40,0.85);
+  flex-shrink: 0;
+  background: rgba(7,20,40,0.95);
   backdrop-filter: blur(12px);
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .hero__stats-container {
   width: 100%;
-  padding: 36px clamp(24px, 8vw, 140px);
+  padding: 36px clamp(24px, 8vw, 160px);
   display: flex;
   align-items: center;
 }
@@ -368,7 +376,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 6px;
 }
 
@@ -388,7 +396,7 @@
 
 .hero__stat-divider {
   width: 1px;
-  height: 52px;
+  height: 60px;
   background: rgba(255,255,255,0.12);
   flex-shrink: 0;
 }
@@ -501,11 +509,14 @@
    ============================================================ */
 .entregas {
   padding: 100px 0 60px;
-  background: var(--light);
+  background: var(--dark);
 }
 
 .entregas .section-title {
   margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  color: var(--white);
 }
 
 .entregas__gallery {
@@ -663,7 +674,7 @@
 
 .portfolio__img-wrap {
   position: relative;
-  height: 220px;
+  height: 400px;
   overflow: hidden;
 }
 
@@ -720,7 +731,7 @@
    VALUE PROPOSITION
    ============================================================ */
 .value-prop {
-  padding: 100px 0;
+  padding: 0 0 100px 0;
   background: var(--dark);
 }
 
@@ -1306,7 +1317,7 @@
 }
 
 .footer__logo-img {
-  height: 36px;
+  height: 48px;
   width: auto;
   object-fit: contain;
 }
@@ -1471,6 +1482,11 @@
    RESPONSIVE — TABLET (≤ 1024px)
    ============================================================ */
 @media (max-width: 1024px) {
+
+  .hero__content {
+  margin-left: 0px;
+}
+
   .especialidades__grid {
     grid-template-columns: repeat(2, 1fr);
   }

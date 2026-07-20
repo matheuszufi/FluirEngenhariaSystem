@@ -30,60 +30,60 @@ export default function Hero() {
 
   return (
     <section className="hero" id="home">
-      {slides.length > 0 ? (
-        slides.map((slide, i) => (
-          <div
-            key={slide.id}
-            className={`hero__slide${i === current ? ' hero__slide--active' : ''}`}
-            style={{ backgroundImage: `url('${slide.imageUrl}')` }}
-          />
-        ))
-      ) : (
-        <div className="hero__slide hero__slide--active" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}hero-bg.png')` }} />
-      )}
-
-      <div className="hero__overlay" />
-
-      <div className="hero__container">
-        <div className="hero__content">
-          {/* <p className="hero__tag">Projetos em BIM</p> */}
-          <h1 className="hero__title">
-            Projetos Hidráulicos<br />
-            Prediais em <span className="hero__title--accent">BIM</span>
-          </h1>
-          <p className="hero__subtitle">
-            Empresa referência em projetos hidráulicos para construções
-            residenciais e comerciais. Entregamos soluções eficientes,
-            compatibilizadas e dentro do prazo.
-          </p>
-          <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALE CONOSCO</a>
-          <a href="/" className="btn btn--outline-white" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}}>VER PROJETOS</a>
-        </div>
-      </div>
-
-      {slides.length > 1 && (
-        <div className="hero__dots">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              className={`hero__dot${i === current ? ' hero__dot--active' : ''}`}
-              onClick={() => setCurrent(i)}
-              aria-label={`Slide ${i + 1}`}
+      <div className="hero__top">
+        {slides.length > 0 ? (
+          slides.map((slide, i) => (
+            <div
+              key={slide.id}
+              className={`hero__slide${i === current ? ' hero__slide--active' : ''}`}
+              style={{ backgroundImage: `url('${slide.imageUrl}')` }}
             />
-          ))}
+          ))
+        ) : (
+          <div className="hero__slide hero__slide--active" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}hero-bg.png')` }} />
+        )}
+
+        <div className="hero__overlay" />
+
+        <div className="hero__container">
+          <div className="hero__content">
+            {/* <p className="hero__tag">Projetos em BIM</p> */}
+            <h1 className="hero__title">
+              Projetos Hidráulicos<br />
+              Prediais em <span className="hero__title--accent">BIM</span>
+            </h1>
+            <p className="hero__subtitle">
+              Conforto máximo para o cliente final, economia financeira e prevenção de retrabalho para o construtor.
+            </p>
+            <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALE CONOSCO</a>
+            <a href="/" className="btn btn--outline-white" onClick={(e) => { e.preventDefault(); document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}}>VER PROJETOS</a>
+          </div>
         </div>
-      )}
+
+        {slides.length > 1 && (
+          <div className="hero__dots">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                className={`hero__dot${i === current ? ' hero__dot--active' : ''}`}
+                onClick={() => setCurrent(i)}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
       <div className="hero__stats">
         <div className="hero__stats-container">
           <div className="hero__stat">
             <span className="hero__stat-number">+800.000m²</span>
-            <span className="hero__stat-label">de empreendimentos</span>
+            <span className="hero__stat-label">projetados</span>
           </div>
           <div className="hero__stat-divider" />
           <div className="hero__stat">
             <span className="hero__stat-number">+40</span>
-            <span className="hero__stat-label">projetos ativos</span>
+            <span className="hero__stat-label">edificios verticais</span>
           </div>
           <div className="hero__stat-divider" />
           <div className="hero__stat">
