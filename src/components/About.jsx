@@ -4,17 +4,15 @@ export default function About() {
       <div className="container about__container">
         <div className="about__content">
          
-          {/* <p className="about__overline">PROJETOS PREDIAIS EM BIM</p> */}
+          <p className="about__overline">QUEM SOMOS</p>
           <h2 className="about__title">Sobre a Fluir Engenharia</h2>
-           <p className="section-tag">PROJETOS PREDIAIS EM BIM</p>
+           {/* <p className="section-tag">PROJETOS PREDIAIS EM BIM</p> */}
           <p className="about__text">
-            Nossa história é marcada por um compromisso com a excelência em cada projeto desenvolvido.
-            A Fluir atua de forma dedicada para superar as expectativas de cada cliente Fluir atualizado.
-            A excelência financeira e a preservação de recursos técnicos em todos as etapas do projeto.
+            Nossa história é marcada por um compromisso com a excelência em cada projeto desenvolvido,
+            prezando por garantir conforto máximo para o cliente final alinhado à economia financeira e prevenção de retrabalho para o construtor.
           </p>
           <p className="about__text">
-            Com uma equipe experiente e comprometida, fornecemos serviços de alta qualidade que otimizam
-            processos e potencializam resultados técnicos em todos os nichos das obras.
+             Com uma equipe experiente e comprometida, fornecemos serviços de alta qualidade, com processo e conhecimento técnico em todas as etapas do projeto.
           </p>
           {/* <a href="/" className="btn btn--primary" onClick={(e) => { e.preventDefault(); document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }) }}>FALE COM A GENTE</a> */}
         </div>
