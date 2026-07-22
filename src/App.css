@@ -337,7 +337,7 @@
 }
 
 .hero__title {
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
   color: var(--white);
   line-height: 1.12;
@@ -741,7 +741,7 @@
 }
 
 .value-prop__content {
-  max-width: 800px;
+  max-width: 850px;
   text-align: center;
 }
 
