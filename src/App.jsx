@@ -19,12 +19,12 @@ function App() {
         <Route path="/" element={<MainSite />} />
         <Route path="/admin" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard/hero" element={<ProtectedRoute><HeroAdmin /></ProtectedRoute>} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/dashboard/faq" element={<ProtectedRoute><FAQAdmin /></ProtectedRoute>} />
         <Route path="/dashboard/testimonials" element={<ProtectedRoute><TestimonialsAdmin /></ProtectedRoute>} />
         <Route path="/dashboard/portfolio" element={<ProtectedRoute><PortfolioAdmin /></ProtectedRoute>} />
         <Route path="/dashboard/clients" element={<ProtectedRoute><ClientsAdmin /></ProtectedRoute>} />
-        <Route path="/dashboard/hero" element={<ProtectedRoute><HeroAdmin /></ProtectedRoute>} />
         <Route path="/dashboard/entregas" element={<ProtectedRoute><EntregasAdmin /></ProtectedRoute>} />
       </Routes>
     </HashRouter>

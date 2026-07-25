@@ -1,4 +1,14 @@
 /* Testimonials Admin specific styles — reuses faqadmin classes for layout */
+.faqadmin__add-btn {
+  background: rgba(101, 161, 88, 0.199);
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(101, 161, 88, 0.199);
+
+  color: rgba(255, 255, 255, 0.705);
+  display: flex;
+  align-items: center;
+}
 
 .ta__form-grid {
   display: grid;
