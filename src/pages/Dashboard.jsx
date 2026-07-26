@@ -106,7 +106,7 @@ export default function Dashboard() {
       </header>
 
       <div className="dash__stats">
-        {stats.map((s) => (
+        {/* {stats.map((s) => (
           <div className="dash__stat-card" key={s.label}>
             <div className="dash__stat-icon">{s.icon}</div>
             <div>
@@ -114,12 +114,12 @@ export default function Dashboard() {
               <span className="dash__stat-label">{s.label}</span>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
 
       <div className="dash__grid">
         <div className="dash__card">
-          <h2 className="dash__card-title">Acesso rÃ¡pido</h2>
+          <h2 className="dash__card-title">Acesso rápido</h2>
           <div className="dash__quick-links">
             {quickLinks.map((l) => (
               <Link to={l.href} className="dash__quick-link" key={l.label}>
@@ -142,7 +142,7 @@ export default function Dashboard() {
               <strong>Administrador</strong>
             </div>
             <div className="dash__account-row">
-              <span>AutenticaÃ§Ã£o</span>
+              <span>Autenticação</span>
               <span className="dash__badge dash__badge--green">Ativa</span>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function Dashboard() {
               <polyline points="16 17 21 12 16 7"/>
               <line x1="21" y1="12" x2="9" y2="12"/>
             </svg>
-            Encerrar sessÃ£o
+            Encerrar sessão
           </button>
         </div>
       </div>
