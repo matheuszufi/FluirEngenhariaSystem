@@ -70,6 +70,21 @@ export default function ClientsAdmin() {
     return () => unsub()
   }, [])
 
+  /* ── REORDER ── */
+  const moveUp = async (index) => {
+    if (index === 0) return
+    const a = clients[index], b = clients[index - 1]
+    await update(ref(rtdb, `clients/${a.id}`), { order: b.order ?? index - 1 })
+    await update(ref(rtdb, `clients/${b.id}`), { order: a.order ?? index })
+  }
+
+  const moveDown = async (index) => {
+    if (index === clients.length - 1) return
+    const a = clients[index], b = clients[index + 1]
+    await update(ref(rtdb, `clients/${a.id}`), { order: b.order ?? index + 1 })
+    await update(ref(rtdb, `clients/${b.id}`), { order: a.order ?? index })
+  }
+
   /* ── SEED ── */
   const handleSeed = async () => {
     if (clients.length > 0 && !window.confirm('Já existem parceiros. Deseja adicionar os padrão mesmo assim?')) return
@@ -184,7 +199,7 @@ export default function ClientsAdmin() {
 
           {/* GRID */}
           <div className="ca__grid">
-            {clients.map((item) => (
+            {clients.map((item, index) => (
               editingId === item.id ? (
                 <div key={item.id} className="faqadmin__card faqadmin__card--editing ca__edit-card">
                   <div className="faqadmin__form ca__form-grid">
@@ -204,6 +219,7 @@ export default function ClientsAdmin() {
                 </div>
               ) : (
                 <div key={item.id} className="ca__card">
+                  <span className="ca__card-num">{index + 1}</span>
                   <div className="ca__card-logo">
                     {item.logoUrl
                       ? <img src={item.logoUrl} alt={item.name} />
@@ -212,6 +228,10 @@ export default function ClientsAdmin() {
                   </div>
                   <p className="ca__card-name">{item.name}</p>
                   <div className="ca__card-actions">
+                    <div className="ha__reorder">
+                      <button onClick={() => moveUp(index)} disabled={index === 0} title="Mover para cima">↑</button>
+                      <button onClick={() => moveDown(index)} disabled={index === clients.length - 1} title="Mover para baixo">↓</button>
+                    </div>
                     <button className="faqadmin__icon-btn faqadmin__icon-btn--edit" onClick={() => startEdit(item)}>
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>

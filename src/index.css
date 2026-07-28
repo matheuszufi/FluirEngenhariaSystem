@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: #1A1A2E;
   background: #fff;
   overflow-x: hidden;
@@ -28,5 +28,5 @@ a {
 button {
   cursor: pointer;
   border: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
