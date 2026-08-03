@@ -3,20 +3,6 @@ import { createPortal } from 'react-dom'
 import { ref, onValue } from 'firebase/database'
 import { rtdb } from '../firebase'
 
-function buildVideoSrc(url) {
-  if (!url) return url
-
-  // YouTube: precisa do parâmetro playlist=ID (igual ao vídeo) para o loop funcionar
-  const ytMatch = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/)
-  if (ytMatch) {
-    const id = ytMatch[1]
-    return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&modestbranding=1&rel=0&playsinline=1`
-  }
-
-  // Google Drive: sem suporte nativo a loop, mantém autoplay
-  return `${url}${url.includes('?') ? '&' : '?'}autoplay=1`
-}
-
 export default function Entregas() {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(true)
@@ -59,7 +45,9 @@ export default function Entregas() {
             >
               {img.type === 'video' ? (
                 <iframe
-                  src={buildVideoSrc(img.imageUrl)}
+                  src={`${img.imageUrl}${
+                    img.imageUrl.includes('?') ? '&' : '?'
+                  }autoplay=1&mute=1`}
                   title={img.label || 'Vídeo'}
                   className="entregas__video"
                   allow="autoplay; fullscreen"
@@ -120,7 +108,9 @@ export default function Entregas() {
                 onClick={(e) => e.stopPropagation()}
               >
                 <iframe
-                  src={buildVideoSrc(selectedImage.imageUrl)}
+                  src={`${selectedImage.imageUrl}${
+                    selectedImage.imageUrl.includes('?') ? '&' : '?'
+                  }autoplay=1&mute=1`}
                   title={selectedImage.label || 'Vídeo'}
                   allow="autoplay; fullscreen"
                   allowFullScreen
