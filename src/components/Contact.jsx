@@ -27,10 +27,17 @@ export default function Contact() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
+          // aliases duplicados para casar com nomes de variavel comuns do template EmailJS
           nome: form.nome,
+          name: form.nome,
+          from_name: form.nome,
           email: form.email,
+          from_email: form.email,
+          reply_to: form.email,
           telefone: form.telefone,
+          phone: form.telefone,
           mensagem: form.mensagem,
+          message: form.mensagem,
         },
         { publicKey: EMAILJS_PUBLIC_KEY }
       )
