@@ -552,8 +552,8 @@
 .entregas__item {
   position: relative;
   flex-shrink: 0;
-  width: 400px;
-  height: 240px;
+  width: 680px;
+  height: 360px;
   border-radius: var(--radius);
   overflow: hidden;
   scroll-snap-align: start;
